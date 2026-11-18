@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Pomodoro</title></head>
+<body>
+  <h1 id="timer">25:00</h1>
+  <button id="start">Start</button>
+  <script>
+    let sec = 1500, id = null;
+    const el = document.getElementById("timer");
+    document.getElementById("start").onclick = () => {
+      if (id) return;
+      id = setInterval(() => {
+        if (sec <= 0) return clearInterval(id);
+        sec--;
+        el.textContent = `${String(Math.floor(sec/60)).padStart(2,"0")}:${String(sec%60).padStart(2,"0")}`;
+      }, 1000);
+    };
+  </script>
+</body>
+</html>
